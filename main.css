@@ -13,9 +13,14 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
   margin: 1rem;
   padding: 0;
+  max-width: 800px;
 }
 
 .row {
   display: flex;
   align-items: center;
+}
+
+.space-around {
+  justify-content: space-around;
 }
