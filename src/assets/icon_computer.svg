@@ -1,0 +1,15 @@
+<svg id="icon_computer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.5 59.5">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <path id="Path_71" data-name="Path 71" class="cls-1" d="M0,0H59.5V59.5H0Z"/>
+  <path id="Path_72" data-name="Path 72" class="cls-2" d="M49.583,38.708a4.952,4.952,0,0,0,4.934-4.958l.025-24.792A4.973,4.973,0,0,0,49.583,4H9.917A4.973,4.973,0,0,0,4.958,8.958V33.75a4.973,4.973,0,0,0,4.958,4.958H0v4.958H59.5V38.708ZM9.917,8.958H49.583V33.75H9.917Z" transform="translate(0 5.917)"/>
+</svg>

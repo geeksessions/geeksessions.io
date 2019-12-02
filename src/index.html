@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Geek Sessions Faro</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            font-family: Roboto, sans-serif;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+
+        body::after {
+            content: "";
+            background-image: url("./assets/background.jpg");
+            opacity: 0.6;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .header {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            height: 80px;
+            justify-content: space-between;
+            padding-left: 5%;
+            padding-right: 5%;
+            margin-top: 30px;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+        }
+
+        .joinGeekSessionsLink {
+            align-items: center;
+            background-color: rgba(255, 255, 255, .2);
+            border-radius: 30px;
+            color: white;
+            display: flex;
+            flex-direction: row;
+            height: 35px;
+            justify-content: center;
+            text-decoration: none;
+            width: 250px;
+        }
+
+        .mainBody {
+            align-items: center;
+            display: flex;
+            flex: 1 1 100%;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0% 20%;
+        }
+
+        .mainBody h1 {
+            font-size: 36px;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .eventContainer {
+            align-items: flex-start;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 10%;
+            width: 100%;
+        }
+
+        .eventArticle {
+            font-size: 16px;
+            font-weight: 300;
+            max-width: 300px;
+        }
+
+        .eventArticle p {
+            margin: 0;
+            text-align: left;
+        }
+
+
+        .eventLogo {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 30px;
+        }
+
+        footer {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            position: absolute;
+            right: 2%;
+            top: 40%;
+            width: 30px;
+        }
+
+        .socialMediaLogo {
+            align-items: center;
+            background-color: rgba(255, 255, 255, .2);
+            border-radius: 15px;
+            display: flex;
+            height: 30px;
+            justify-content: center;
+            margin-top: 20px;
+            width: 30px;
+        }
+
+        .socialMediaLogo img {
+            height: 15px;
+            width: 15px;
+        }
+    </style>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin,latin-ext' rel='stylesheet'
+        type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="Geek Sessions organizes regular events like talks, workshops and fireside chats with the goal of bringing local tech denizens together." />
+</head>
+
+<body>
+    <header class="header">
+        <img alt="Geek Sessions Faro" class="logo" src="assets/logo_white.svg" />
+        <a class="joinGeekSessionsLink" href="https://chat.geeksessions.io/" rel="noopener" target="_blank">
+            Join Geek Sessions on Discord
+        </a>
+    </header>
+    <main class="mainBody">
+        <h1>
+            Geek Sessions organizes regular events like talks, workshops and fireside chats with the goal of bringing
+            local tech
+            denizens together.
+        </h1>
+        <div class="eventContainer">
+            <article class="eventArticle">
+                <img alt="talks" class="eventLogo" src="/assets/icon_microphone.svg" />
+                <p>
+                    Talks. Geek Sessions organizes tech talks with speakers from all around the world to encourage
+                    knowledge sharing and networking in the region of Algarve.
+                </p>
+                <p>
+                    Interested in giving a talk? Let us know in our Discord.
+                </p>
+            </article>
+            <article class="eventArticle">
+                <img alt="workshops" class="eventLogo" src="/assets/icon_computer.svg" />
+                <p>
+                    Workshops. Ever wanted to learn a new technology or improve in one you already know? Join us in one
+                    of our workshops, from Node schools to IoT you never know what will come next.
+                </p>
+            </article>
+            <article class="eventArticle">
+                <img alt="fireside chats" class="eventLogo" src="/assets/icon_fire.svg" />
+                <p>
+                    Fireside Chats. Join the Geek Sessions in informal conversations with professionals from IT where we
+                    attempt to encourage open discussion of a given topic.
+                </p>
+            </article>
+        </div>
+    </main>
+    <footer>
+        <a class="socialMediaLogo" href="https://pt-pt.facebook.com/GeekSessionsFaro" rel="noopener" target="_blank">
+            <img alt="facebook" src="/assets/icon_facebook.svg" />
+        </a>
+        <a class="socialMediaLogo" href="https://github.com/geeksessions" rel="noopener" target="_blank">
+            <img alt="github" src="/assets/icon_github.svg" />
+        </a>
+        <a class="socialMediaLogo" href="https://twitter.com/GeekSessionsFAO" rel="noopener" target="_blank">
+            <img alt="twitter" src="/assets/icon_twitter.svg" />
+        </a>
+    </footer>
+</body>
+
+</html>
