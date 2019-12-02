@@ -13,7 +13,7 @@ npm install
 To create a production build:
 
 ```sh
-npm run build-prod
+npm run build
 ```
 
 To create and run a development build:
