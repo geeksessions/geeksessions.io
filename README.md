@@ -25,7 +25,7 @@ npm run build-dev
 Then on a new terminal window run:
 
 ```sh
-serve dist
+serve public
 ```
 
 Open a browser on `localhost:5000`
