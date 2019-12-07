@@ -1,5 +1,8 @@
 {
   "version": 2,
-  "alias": ["geeksessions.io"]
-
+  "alias": ["geeksessions.io"],
+  "env": {
+    "GOOGLE_CALENDAR_ID": "@google_calendar_id",
+    "GOOGLE_CALENDAR_API_KEY": "@google_calendar_api_key"
+  }
 }
