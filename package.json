@@ -13,8 +13,9 @@
     "author": "Ricardo Soares",
     "license": "MIT",
     "scripts": {
-        "build-dev": "webpack -d --mode development --watch",
-        "build": "webpack -p --mode production"
+        "dev": "next",
+        "build": "next build",
+        "start": "next start"
     },
     "bugs": {
         "url": "https://github.com/geeksessions/geeksessions.github.io/issues"
@@ -22,24 +23,13 @@
     "homepage": "https://github.com/geeksessions/geeksessions.github.io#readme",
     "dependencies": {
         "@hapi/wreck": "^16.0.1",
-        "luxon": "^1.21.3"
+        "isomorphic-unfetch": "^3.0.0",
+        "luxon": "^1.21.3",
+        "next": "^9.1.6",
+        "react-dom": "^16.12.0",
+        "react": "^16.12.0"
     },
     "devDependencies": {
-        "@babel/core": "^7.7.4",
-        "@babel/preset-env": "^7.7.4",
-        "autoprefixer": "^9.7.3",
-        "babel-loader": "^8.0.6",
-        "copy-webpack-plugin": "^5.0.5",
-        "css-loader": "^3.2.1",
-        "eslint": "^6.7.2",
-        "file-loader": "^5.0.2",
-        "html-webpack-plugin": "^3.2.0",
-        "html-webpack-template": "^6.2.0",
-        "postcss-loader": "^3.0.0",
-        "serve": "^11.2.0",
-        "style-loader": "^1.0.1",
-        "url-loader": "^3.0.0",
-        "webpack": "^4.41.2",
-        "webpack-cli": "^3.3.10"
+        "eslint": "^6.7.2"
     }
 }

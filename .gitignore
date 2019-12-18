@@ -1,6 +1,7 @@
 .cache/
+.next
+out
 coverage/
-public/
 node_modules/
 *.log
 .env.local
