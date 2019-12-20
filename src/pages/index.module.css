@@ -1,0 +1,151 @@
+body {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-family: Roboto, sans-serif;
+    height: 100vh;
+    margin: 0;
+}
+
+
+body::after {
+    background-attachment: fixed;
+    background-image: url("./../assets/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: 0;
+    content: "";
+    left: 0;
+    opacity: 0.6;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.header {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 30px;
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+}
+
+.joinGeekSessionsLink {
+    align-items: center;
+    background-color: rgba(255, 255, 255, .2);
+    border-radius: 30px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+    justify-content: center;
+    text-decoration: none;
+    width: 250px;
+}
+
+.mainBody {
+    align-items: center;
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0% 20%;
+}
+
+.mainBody h1 {
+    font-size: 36px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.eventContainer {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 10%;
+    width: 100%;
+}
+
+.eventArticle {
+    font-size: 16px;
+    font-weight: 300;
+    max-width: 300px;
+}
+
+.eventArticle p {
+    margin: 0;
+    text-align: left;
+}
+
+.eventLogo {
+    height: 40px;
+    margin-bottom: 30px;
+    width: 40px;
+}
+
+.eventCalendar {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+#eventList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.event {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: space-between;
+    max-height: 300px;
+    padding: 10px;
+    width: 200px;
+}
+
+#eventError {
+    color: red;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    position: fixed;
+    right: 2%;
+    top: 40%;
+    width: 30px;
+}
+
+.socialMediaLogo {
+    align-items: center;
+    background-color: rgba(255, 255, 255, .2);
+    border-radius: 15px;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    margin-top: 20px;
+    width: 30px;
+}
+
+.socialMediaLogo img {
+    height: 15px;
+    width: 15px;
+}
