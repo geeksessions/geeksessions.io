@@ -253,7 +253,7 @@ Index.getInitialProps = async function(context) {
     }
     
     try {
-        const HOST_NAME = getHostName(context.request);
+        const HOST_NAME = getHostName(context.req);
         const res = await fetch(`${HOST_NAME}/api/events`);
         const data = await res.json();
 
