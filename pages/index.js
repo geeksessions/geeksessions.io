@@ -207,7 +207,7 @@ const Index = (props) =>  (
         }
 
         #eventError {
-            color: red;
+            color: #ff0033;
         }
 
         footer {
