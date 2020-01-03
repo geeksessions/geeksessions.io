@@ -1,6 +1,13 @@
+// Import
 import { Fragment } from "react";
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
+// Constants
+const DEVELOPMENT_ENV = "development";
+
+function getHostName(request) {
+    return process.env.NODE_ENV === DEVELOPMENT_ENV ? "http://localhost:3000" : `https://${request.headers.host}`;
+}
 
 const Index = (props) =>  (
     <Fragment>
@@ -239,14 +246,15 @@ const Index = (props) =>  (
     </Fragment>
 );
 
-Index.getInitialProps = async function() {
+Index.getInitialProps = async function(context) {
     const response = {
         error: false,
         events: []
     }
     
     try {
-        const res = await fetch(`${process.env.API_HOST}/api/events`);
+        const HOST_NAME = getHostName(context.request);
+        const res = await fetch(`${HOST_NAME}/api/events`);
         const data = await res.json();
 
         response.events = data;
