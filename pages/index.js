@@ -2,11 +2,9 @@
 import { Fragment } from "react";
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
-// Constants
-const DEVELOPMENT_ENV = "development";
 
 function getHostName(request) {
-    return process.env.NODE_ENV === DEVELOPMENT_ENV ? "http://localhost:3000" : `https://${request.headers.host}`;
+    return process.env.API_HOST || `https://${request.headers.host}`;
 }
 
 const Index = (props) =>  (

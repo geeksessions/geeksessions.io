@@ -34,7 +34,7 @@ On a .env file, add the following keys from Google Calendar API
 ```sh
 GOOGLE_CALENDAR_ID=<id_of_your_calendar_available_on_calendar_settings>
 GOOGLE_CALENDAR_API_KEY=<simple_key_generated_on_google_projects_console>
-NODE_ENV=development
+API_HOST=<the_address_where_the_api_is_running_by_default_http://localhost:3000>
 ```
 
 Next, run now in development mode
