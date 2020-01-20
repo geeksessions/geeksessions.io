@@ -39,8 +39,9 @@ const Index = (props) =>  (
                         knowledge sharing and networking in the region of Algarve.
                     </p>
                     <p>
-                        Interested in giving a talk? Let us know in our Discord.
+                        Interested in giving a talk?
                     </p>
+                    <a class="talksRepoLink" href="https://github.com/geeksessions/talks/issues/" rel="noopener" target="_blank">Submit one to our repo</a>
                 </article>
                 <article className="eventArticle">
                     <img alt="workshops" className="eventLogo" src="/assets/icon_computer.svg" />
@@ -185,6 +186,18 @@ const Index = (props) =>  (
             width: 40px;
             height: 40px;
             margin-bottom: 30px;
+        }
+
+        .talksRepoLink {
+            color: #3333ff;
+        }
+
+        .talksRepoLink:visited {
+            color: #913c91;
+        }
+
+        .talksRepoLink:active {
+            color: #ff3636;
         }
 
         .eventCalendar {
