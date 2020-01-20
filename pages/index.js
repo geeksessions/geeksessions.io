@@ -68,9 +68,9 @@ const Index = (props) =>  (
                                 <time>{event.date}</time>
                                 <time>{event.startTime} - {event.endTime}</time>
                                 <a href={`https://maps.google.com/?q=${event.location}`} rel="noopener" target="_blank">{event.location}</a>
-                                <p>
+                                {/* <p>
                                     {event.description}
-                                </p>
+                                </p> */}
                             </article>        
                             );
                         })}
