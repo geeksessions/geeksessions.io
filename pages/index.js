@@ -10,7 +10,7 @@ function getHostName(request) {
 const Index = (props) =>  (
     <Fragment>
          <Head>
-            <meta charset="utf-8" />
+            <meta charSet="utf-8" />
             <title>Geek Sessions Faro</title>
             <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
             <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
@@ -21,39 +21,40 @@ const Index = (props) =>  (
         </Head>
         <header className="header">
             <img alt="Geek Sessions Faro" className="logo" src="assets/logo_white.svg" />
-            <a className="joinGeekSessionsLink" href="https://chat.geeksessions.io/" rel="noopener" target="_blank">
+            <a className="joinGeekSessionsLink secondary-box" href="https://chat.geeksessions.io/" rel="noopener" target="_blank">
                 Join Geek Sessions on Discord
             </a>
         </header>
         <main className="mainBody">
-            <h1>
-                Geek Sessions organizes regular events like talks, workshops and fireside chats with the goal of bringing
-                local tech
-                denizens together.
+            <h1 className="primary-box">
+                Geek Sessions organizes regular events with the goal of bringing local tech denizens together.
             </h1>
             <div className="eventContainer">
-                <article className="eventArticle">
+                <article className="eventArticle primary-box">
                     <img alt="talks" className="eventLogo" src="/assets/icon_microphone.svg" />
+                    <h3>Talks</h3>
                     <p>
-                        Talks. Geek Sessions organizes tech talks with speakers from all around the world to encourage
+                        Geek Sessions organizes tech talks with speakers from all around the world to encourage
                         knowledge sharing and networking in the region of Algarve.
                     </p>
                     <p>
                         Interested in giving a talk?
                     </p>
-                    <a class="talksRepoLink" href="https://github.com/geeksessions/talks/issues/" rel="noopener" target="_blank">Submit one to our repo</a>
+                    <a className="talksRepoLink" href="https://github.com/geeksessions/talks/issues/" rel="noopener" target="_blank">Submit one to our repo</a>
                 </article>
-                <article className="eventArticle">
+                <article className="eventArticle primary-box">
                     <img alt="workshops" className="eventLogo" src="/assets/icon_computer.svg" />
+                    <h3>Workshops</h3>
                     <p>
-                        Workshops. Ever wanted to learn a new technology or improve in one you already know? Join us in one
+                        Ever wanted to learn a new technology or improve in one you already know? Join us in one
                         of our workshops, from Node schools to IoT you never know what will come next.
                     </p>
                 </article>
-                <article className="eventArticle">
+                <article className="eventArticle primary-box">
                     <img alt="fireside chats" className="eventLogo" src="/assets/icon_fire.svg" />
+                    <h3>Fireside Chats</h3>
                     <p>
-                        Fireside Chats. Join the Geek Sessions in informal conversations with professionals from IT where we
+                        Join the Geek Sessions in informal conversations with professionals from IT where we
                         attempt to encourage open discussion of a given topic.
                     </p>
                 </article>
@@ -92,21 +93,22 @@ const Index = (props) =>  (
         <style jsx global>{`
         body {
             background-color: black;
-            color: white;
+            color: rgb(240, 240, 240);
             display: flex;
             flex-direction: column;
             font-family: Roboto, sans-serif;
             height: 100vh;
+            line-height: 1.1;
             margin: 0;
-        }
-
-
-        body::after {
             background-attachment: fixed;
             background-image: url("./assets/background.jpg");
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+        }
+
+
+        body::after {
             bottom: 0;
             content: "";
             left: 0;
@@ -135,15 +137,10 @@ const Index = (props) =>  (
 
         .joinGeekSessionsLink {
             align-items: center;
-            background-color: rgba(255, 255, 255, .2);
-            border-radius: 30px;
-            color: white;
             display: flex;
             flex-direction: row;
-            height: 35px;
             justify-content: center;
             text-decoration: none;
-            width: 250px;
         }
 
         .mainBody {
@@ -152,7 +149,10 @@ const Index = (props) =>  (
             flex: 1 1 100%;
             flex-direction: column;
             justify-content: center;
-            padding: 0% 20%;
+            padding: 0 1em;
+            max-width: 75%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .mainBody h1 {
@@ -174,7 +174,31 @@ const Index = (props) =>  (
         .eventArticle {
             font-size: 16px;
             font-weight: 300;
-            max-width: 300px;
+            max-width: 15em;
+            margin: 1em auto;
+            flex: auto;
+        }
+
+        /*
+         * Use on elements with block display to create a 
+         * a box using the "primary" color combination.
+         */
+        .primary-box {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: rgb(240, 240, 240);
+            padding: 1em;
+            border-radius: .3em;
+        }
+
+        /*
+         * Use on elements with block display to create a 
+         * a box using the "secondary" color combination.
+         */
+        .secondary-box {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: rgb(240, 240, 240);
+            padding: 1em;
+            border-radius: .3em;
         }
 
         .eventArticle p {
@@ -185,7 +209,8 @@ const Index = (props) =>  (
         .eventLogo {
             width: 40px;
             height: 40px;
-            margin-bottom: 30px;
+            float: left;
+            margin-right: 1em;
         }
 
         .talksRepoLink {
