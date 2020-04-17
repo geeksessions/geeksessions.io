@@ -1,45 +1,50 @@
-# Geek Sessions website
+# GeekSessions.io
 
-This repos is used to hold the geek sessions website
+Repository for the [GeekSessions.io web app](https://geeksessionsio.geeksessions.now.sh/), to promote tech events for professionals and enthusiasts alike.
 
-## Building and running on localhost
+## Installation
 
-First install dependencies:
+You need [Node.js 12+](https://nodejs.org/en/) (with NPM).
 
-```sh
-npm install
-```
+1. clone or download project
+2. run `npm install` from project folder
 
-To create a production build:
+## Run project (dev)
 
-```sh
-npm run build
-```
+After [installing project](#installation):
 
-To run in development
+1. run `npm run dev` to start server
+2. (optional) [set up google calendar](#set-up-google-calendar-API) (see instructions below)
 
-```sh
-npm run dev
-```
+App is available in `localhost:3000`. Serverless functions are in `localhost:3000/api/<function_name>`.
 
-To test with your own google calendar, you need to follow these steps:
-1) Register a project on https://code.google.com/apis/console
-2) Generate a Simple API Access key
-3) Ensure Calendar API is activated under services.
-4) Your test calendar must be public (on calendar settings)
+### Set up Google Calendar API
 
-On a .env file, add the following keys from Google Calendar API
-```sh
-GOOGLE_CALENDAR_ID=<id_of_your_calendar_available_on_calendar_settings>
-GOOGLE_CALENDAR_API_KEY=<simple_key_generated_on_google_projects_console>
-API_HOST=<the_address_where_the_api_is_running_by_default_http://localhost:3000>
-```
+You can use your **public Google Calendar** to load events locally:
 
-Next, run now in development mode
-```sh
-npm run dev
-```
+1. **get API key and id** for Google calendar service (see ["Creating a Google API Key"](https://docs.simplecalendar.io/google-api-key/))
+2. create an `.env` file with:
 
-Open a browser on `localhost:3000`
+   ```env
+   GOOGLE_CALENDAR_ID=<calendar_id>
+   GOOGLE_CALENDAR_API_KEY=<api_key>
+   API_HOST=http://localhost:3000
+   ```
 
-Serverless functions will be available e.g. `localhost:3000/api/<yourserverlessfunctionname>`
+3. in `.env`, replace:
+   - <calendar_id> with your Google Calendar's ID
+   - <api_key> with its matching API key
+
+## Make production build
+
+Run `npm run build` from the project folder.
+
+## Contributing
+
+To contribute to *geeksessions.io* you can:
+
+- work on a feature or fix
+- improve documentation
+- open an issue
+  
+To work on a feature, fix, or documentation, fork the project and make a pull request to **master**.
