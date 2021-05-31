@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-image: url("/assets/background.jpg");
+  @apply bg-black bg-fixed bg-center bg-no-repeat bg-cover;
+  @apply text-gray-100 flex flex-col;
+}
+
+.hero {
+  height: calc(100vh - 100px);
+}

@@ -1,310 +1,146 @@
-// Import
-import { Fragment } from "react";
+import { Fragment } from 'react';
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
+import Footer from '../components/footer';
+import Header from '../components/header';
 
-function getHostName(request) {
-    return process.env.API_HOST || `https://${request.headers.host}`;
+const getHostName = (request) => process.env.API_HOST || `https://${request.headers.host}`;
+
+const truncateText = (text, length) => {
+  if (text.length > length) {
+    return `${text.substring(0, length)}...`;
+  }
+
+  return text;
 }
 
-const Index = (props) =>  (
-    <Fragment>
-         <Head>
-            <meta charSet="utf-8" />
-            <title>Geek Sessions Faro</title>
-            <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
-            <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
-            <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin,latin-ext' rel='stylesheet' type='text/css' /> 
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <meta name="description"
-                content="Geek Sessions organizes regular events like talks, workshops and fireside chats with the goal of bringing local tech denizens together." />
-        </Head>
-        <header className="header">
-            <img alt="Geek Sessions Faro" className="logo" src="assets/logo_white.svg" />
-            <a className="joinGeekSessionsLink secondary-box" href="https://chat.geeksessions.io/" rel="noopener" target="_blank">
-                Join Geek Sessions on Discord
+const Index = (props) => (
+  <Fragment>
+    <Head>
+      <meta charSet="utf-8" />
+      <title>Geek Sessions Faro</title>
+      <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+      <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta
+        name="description"
+        content="Geek Sessions organizes regular events like talks, workshops and fireside chats with the goal of bringing local tech denizens together."
+      />
+    </Head>
+    <Header />
+    <main>
+      <section className="hero container mx-auto flex flex-col items-center text-center pt-60 xl:pt-72 px-14">
+        <div className="max-w-3xl flex flex-col h-full">
+          <h1 className="text-3xl tracking-wider leading-relaxed flex-grow">
+            GeekSessions organizes regular events with the goal of bringing local tech denizens together.
+          </h1>
+          <span className="block text-4xl my-5 animate-bounce">&#8595;</span>
+        </div>
+      </section>
+      <section className="flex flex-col sm:flex-row flex-wrap w-full text-gray-900 mb-20 bg-gray-100 p-14">
+        <article className="flex-1 mb-6 sm:mr-4 sm:mb-0 p-6 rounded-lg">
+          <img alt="talks" className="w-12 h-12 mx-auto mb-7" src="/assets/icon_microphone.svg" />
+          <h3 className="font-bold text-2xl mb-4">Talks</h3>
+          <p className="text-lg mb-2">
+            Geek Sessions organizes tech talks with speakers from all around the world to encourage
+            knowledge sharing and networking in the region of Algarve.
+          </p>
+          <p>
+            Interested in giving a talk?{' '}
+            <a
+              className="text-blue-500 visited:text-purple-600 hover:underline"
+              href="https://github.com/geeksessions/talks/issues/"
+              rel="noopener"
+              target="_blank"
+            >
+              Submit one to our repo!
             </a>
-        </header>
-        <main className="mainBody">
-            <h1 className="primary-box">
-                Geek Sessions organizes regular events with the goal of bringing local tech denizens together.
-            </h1>
-            <div className="eventContainer">
-                <article className="eventArticle primary-box">
-                    <img alt="talks" className="eventLogo" src="/assets/icon_microphone.svg" />
-                    <h3>Talks</h3>
-                    <p>
-                        Geek Sessions organizes tech talks with speakers from all around the world to encourage
-                        knowledge sharing and networking in the region of Algarve.
-                    </p>
-                    <p>
-                        Interested in giving a talk?
-                    </p>
-                    <a className="talksRepoLink" href="https://github.com/geeksessions/talks/issues/" rel="noopener" target="_blank">Submit one to our repo</a>
-                </article>
-                <article className="eventArticle primary-box">
-                    <img alt="workshops" className="eventLogo" src="/assets/icon_computer.svg" />
-                    <h3>Workshops</h3>
-                    <p>
-                        Ever wanted to learn a new technology or improve in one you already know? Join us in one
-                        of our workshops, from Node schools to IoT you never know what will come next.
-                    </p>
-                </article>
-                <article className="eventArticle primary-box">
-                    <img alt="fireside chats" className="eventLogo" src="/assets/icon_fire.svg" />
-                    <h3>Fireside Chats</h3>
-                    <p>
-                        Join the Geek Sessions in informal conversations with professionals from IT where we
-                        attempt to encourage open discussion of a given topic.
-                    </p>
-                </article>
-            </div>
-            <section className="eventCalendar">
-                <h2>Our events</h2>
-                <div id="eventList">
-                        {props.error && <h3 id="eventError">Oopsie there was an error with the API, blame the backend developers :)</h3>}
-                        {props.events.map((event, index) => {
-                            return (
-                            <article key={index} className="event">
-                                <h3>{event.title}</h3>
-                                <time>{event.date}</time>
-                                <time>{event.startTime} - {event.endTime}</time>
-                                <a href={`https://maps.google.com/?q=${event.location}`} rel="noopener" target="_blank">{event.location}</a>
-                                {/* <p>
-                                    {event.description}
-                                </p> */}
-                            </article>        
-                            );
-                        })}
+          </p>
+        </article>
+        <article className="flex-1 mb-6 sm:mr-4 sm:mb-0 p-6 rounded-lg">
+          <img alt="workshops" className="w-12 h-12 mx-auto mb-7" src="/assets/icon_computer.svg" />
+          <h3 className="font-bold text-2xl mb-4">Workshops</h3>
+          <p className="text-lg mb-2">
+            Ever wanted to learn a new technology or improve in one you already know? Join us in one
+            of our workshops, from Node schools to IoT you never know what will come next.
+          </p>
+        </article>
+        <article className="flex-1 mb-6 sm:mb-0 p-6 rounded-lg">
+          <img alt="fireside chats" className="w-12 h-12 mx-auto mb-7" src="/assets/icon_fire.svg" />
+          <h3 className="font-bold text-2xl mb-4">Fireside Chats</h3>
+          <p className="text-lg mb-2">
+            Join the Geek Sessions in informal conversations with professionals from IT where we
+            attempt to encourage open discussion of a given topic.
+          </p>
+        </article>
+      </section>
+      <section className="container mx-auto flex flex-col items-center px-14 mb-40">
+        <h2 className="uppercase text-3xl font-bold tracking-wider leading-relaxed mb-8">
+          Our events
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-gray-200">
+          {
+            props.error &&
+            <h3 className="text-red-700 text-lg col-span-3">Oopsie there was an error with the API, blame the backend developers. :)</h3>
+          }
+          {props.events.map((event, index) => {
+            return (
+              <article key={index} className="bg-gray-700 bg-opacity-90 p-6 rounded-lg flex flex-col">
+                <h3 className="font-bold tracking-wider text-xl mb-2">{truncateText(event.title, 30)}</h3>
+                <p className="mb-2 font-light flex-grow">
+                  {truncateText(event.description, 240)}
+                </p>
+                <div className="flex mb-2">
+                  <img alt="event location" className="w-6 h-6 mr-2" src="/assets/icon_marker.svg" />
+                  <a href={`https://maps.google.com/?q=${event.location}`} rel="noopener" target="_blank">
+                    {truncateText(event.location, 30)}
+                  </a>
                 </div>
-            </section>
-        </main>
-        <footer>
-            <a className="socialMediaLogo" href="https://pt-pt.facebook.com/GeekSessionsFaro" rel="noopener" target="_blank">
-                <img alt="facebook" src="/assets/icon_facebook.svg" />
-            </a>
-            <a className="socialMediaLogo" href="https://github.com/geeksessions" rel="noopener" target="_blank">
-                <img alt="github" src="/assets/icon_github.svg" />
-            </a>
-            <a className="socialMediaLogo" href="https://twitter.com/GeekSessionsFAO" rel="noopener" target="_blank">
-                <img alt="twitter" src="/assets/icon_twitter.svg" />
-            </a>
-        </footer>
-        <style jsx global>{`
-        body {
-            background-color: black;
-            color: rgb(240, 240, 240);
-            display: flex;
-            flex-direction: column;
-            font-family: Roboto, sans-serif;
-            height: 100vh;
-            line-height: 1.1;
-            margin: 0;
-            background-attachment: fixed;
-            background-image: url("./assets/background.jpg");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-
-        body::after {
-            bottom: 0;
-            content: "";
-            left: 0;
-            opacity: 0.6;
-            position: absolute;
-            right: 0;
-            top: 0;
-            z-index: -1;
-        }
-
-        .header {
-            align-items: center;
-            display: flex;
-            flex-direction: row;
-            height: 80px;
-            justify-content: space-between;
-            padding-left: 5%;
-            padding-right: 5%;
-            margin-top: 30px;
-        }
-
-        .logo {
-            height: 80px;
-            width: auto;
-        }
-
-        .joinGeekSessionsLink {
-            align-items: center;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            text-decoration: none;
-        }
-
-        .mainBody {
-            align-items: center;
-            display: flex;
-            flex: 1 1 100%;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0 1em;
-            max-width: 75%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .mainBody h1 {
-            font-size: 36px;
-            font-weight: 300;
-            text-align: center;
-        }
-
-        .eventContainer {
-            align-items: flex-start;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-top: 10%;
-            width: 100%;
-        }
-
-        .eventArticle {
-            font-size: 16px;
-            font-weight: 300;
-            max-width: 15em;
-            margin: 1em auto;
-            flex: auto;
-        }
-
-        /*
-         * Use on elements with block display to create a 
-         * a box using the "primary" color combination.
-         */
-        .primary-box {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: rgb(240, 240, 240);
-            padding: 1em;
-            border-radius: .3em;
-        }
-
-        /*
-         * Use on elements with block display to create a 
-         * a box using the "secondary" color combination.
-         */
-        .secondary-box {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: rgb(240, 240, 240);
-            padding: 1em;
-            border-radius: .3em;
-        }
-
-        .eventArticle p {
-            margin: 0;
-            text-align: left;
-        }
-
-        .eventLogo {
-            width: 40px;
-            height: 40px;
-            float: left;
-            margin-right: 1em;
-        }
-
-        .talksRepoLink {
-            color: #3333ff;
-        }
-
-        .talksRepoLink:visited {
-            color: #913c91;
-        }
-
-        .talksRepoLink:active {
-            color: #ff3636;
-        }
-
-        .eventCalendar {
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            margin-top: 100px;
-        }
-
-        #eventList {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        .event {
-            display: flex;
-            flex-direction: column;
-            height: 300px;
-            justify-content: space-between;
-            max-height: 300px;
-            padding: 10px;
-            width: 200px;
-        }
-
-        #eventError {
-            color: #ff0033;
-        }
-
-        footer {
-            display: flex;
-            flex-direction: column;
-            margin: auto;
-            position: fixed;
-            right: 2%;
-            top: 40%;
-            width: 30px;
-        }
-
-        .socialMediaLogo {
-            align-items: center;
-            background-color: rgba(255, 255, 255, .2);
-            border-radius: 15px;
-            display: flex;
-            height: 30px;
-            justify-content: center;
-            margin-top: 20px;
-            width: 30px;
-        }
-
-        .socialMediaLogo img {
-            height: 15px;
-            width: 15px;
-        }
-    `}</style>
-    </Fragment>
+                <time dateTime={event.startTimeISO} className="flex flex-col md:flex-row md:space-x-6">
+                  <div className="flex mb-2 md:mb-0">
+                    <img alt="event date" className="w-6 h-6 mr-2" src="/assets/icon_calendar.svg" />
+                    {event.date}
+                  </div>
+                  <div className="flex">
+                    <img alt="event time" className="w-6 h-6 mr-2" src="/assets/icon_clock.svg" />
+                    {event.startTime} - {event.endTime}
+                  </div>
+                </time>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </Fragment>
 );
 
-Index.getInitialProps = async function(context) {
-    const response = {
-        error: false,
-        events: []
-    }
-    
-    try {
-        const HOST_NAME = getHostName(context.req);
-        const res = await fetch(`${HOST_NAME}/api/events`);
-        const data = await res.json();
+Index.getInitialProps = async function (context) {
+  const response = {
+    error: false,
+    events: []
+  }
 
-        response.events = data;
-    } catch (error) {
-        console.log(error);
-        response.error = true;
-    } finally {
-        return response;
-    }
+  try {
+    const HOST_NAME = getHostName(context.req);
+    const res = await fetch(`${HOST_NAME}/api/events`);
+    const data = await res.json();
+
+    response.events = data;
+  } catch (error) {
+    console.log(error);
+    response.error = true;
+  } finally {
+    return response;
+  }
 };
 
 Index.defaultProps = {
-    error: false,
-    events: []
+  error: false,
+  events: []
 }
 
 export default Index;
