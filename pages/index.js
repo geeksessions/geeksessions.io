@@ -31,9 +31,9 @@ const Index = (props) => (
     </Head>
     <Header />
     <main>
-      <section className="hero container mx-auto flex flex-col items-center text-center pt-60 xl:pt-72 px-14">
-        <div className="max-w-3xl flex flex-col h-full">
-          <h1 className="text-3xl tracking-wider leading-relaxed flex-grow">
+      <section className="hero container mx-auto flex flex-col items-center text-center px-14">
+        <div className="max-w-3xl flex flex-col h-full justify-between">
+          <h1 className="text-3xl tracking-wider leading-relaxed h-full transform translate-y-1/4 sm:translate-y-1/3">
             GeekSessions organizes regular events with the goal of bringing local tech denizens together.
           </h1>
           <span className="block text-4xl my-5 animate-bounce">&#8595;</span>
