@@ -21,6 +21,7 @@ module.exports = async (req, res) => {
             return event1Date.diff(event2Date).values.milliseconds;
         }).map((event) => ({
             // Return only relevant/formatted information to the frontend
+            id: event.id,
             title: event.summary,
             description: event.description,
             location: event.location,

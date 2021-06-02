@@ -3,16 +3,10 @@ import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import Footer from '../components/footer';
 import Header from '../components/header';
+import EventCard from '../components/event-card';
+import Activity from '../components/activity';
 
 const getHostName = (request) => process.env.API_HOST || `https://${request.headers.host}`;
-
-const truncateText = (text, length) => {
-  if (text.length > length) {
-    return `${text.substring(0, length)}...`;
-  }
-
-  return text;
-}
 
 const Index = (props) => (
   <Fragment>
@@ -40,41 +34,35 @@ const Index = (props) => (
         </div>
       </section>
       <section className="flex flex-col sm:flex-row flex-wrap w-full text-gray-900 mb-20 bg-gray-100 p-14">
-        <article className="flex-1 mb-6 sm:mr-4 sm:mb-0 p-6 rounded-lg">
-          <img alt="talks" className="w-12 h-12 mx-auto mb-7" src="/assets/icon_microphone.svg" />
-          <h3 className="font-bold text-2xl mb-4">Talks</h3>
-          <p className="text-lg mb-2">
-            Geek Sessions organizes tech talks with speakers from all around the world to encourage
-            knowledge sharing and networking in the region of Algarve.
-          </p>
-          <p>
-            Interested in giving a talk?{' '}
-            <a
-              className="text-blue-500 visited:text-purple-600 hover:underline"
-              href="https://github.com/geeksessions/talks/issues/"
-              rel="noopener"
-              target="_blank"
-            >
-              Submit one to our repo!
-            </a>
-          </p>
-        </article>
-        <article className="flex-1 mb-6 sm:mr-4 sm:mb-0 p-6 rounded-lg">
-          <img alt="workshops" className="w-12 h-12 mx-auto mb-7" src="/assets/icon_computer.svg" />
-          <h3 className="font-bold text-2xl mb-4">Workshops</h3>
-          <p className="text-lg mb-2">
-            Ever wanted to learn a new technology or improve in one you already know? Join us in one
-            of our workshops, from Node schools to IoT you never know what will come next.
-          </p>
-        </article>
-        <article className="flex-1 mb-6 sm:mb-0 p-6 rounded-lg">
-          <img alt="fireside chats" className="w-12 h-12 mx-auto mb-7" src="/assets/icon_fire.svg" />
-          <h3 className="font-bold text-2xl mb-4">Fireside Chats</h3>
-          <p className="text-lg mb-2">
-            Join the Geek Sessions in informal conversations with professionals from IT where we
-            attempt to encourage open discussion of a given topic.
-          </p>
-        </article>
+        <Activity
+          title="Talks"
+          description={
+            <>
+              Geek Sessions organizes tech talks with speakers from all around the world to encourage knowledge sharing and networking in the region of Algarve.
+              <br /><br />
+              Interested in giving a talk?{' '}
+              <a
+                className="text-blue-500 visited:text-purple-600 hover:underline"
+                href="https://github.com/geeksessions/talks/issues/"
+                rel="noopener"
+                target="_blank"
+              >
+                Submit one to our repo!
+              </a>
+            </>
+          }
+          imageSrc="/assets/icon_microphone.svg"
+        />
+        <Activity
+          title="Workshops"
+          description="Ever wanted to learn a new technology or improve in one you already know? Join us in one of our workshops, from Node schools to IoT you never know what will come next."
+          imageSrc="/assets/icon_computer.svg"
+        />
+        <Activity
+          title="Fireside Chats"
+          description="Join the Geek Sessions in informal conversations with professionals from IT where we attempt to encourage open discussion of a given topic."
+          imageSrc="/assets/icon_fire.svg"
+        />
       </section>
       <section className="container mx-auto flex flex-col items-center px-14 mb-40">
         <h2 className="uppercase text-3xl font-bold tracking-wider leading-relaxed mb-8">
@@ -85,30 +73,9 @@ const Index = (props) => (
             props.error &&
             <h3 className="text-red-700 text-lg col-span-3">Oopsie there was an error with the API, blame the backend developers. :)</h3>
           }
-          {props.events.map((event, index) => {
+          {props.events.map((event) => {
             return (
-              <article key={index} className="bg-gray-700 bg-opacity-90 p-6 rounded-lg flex flex-col">
-                <h3 className="font-bold tracking-wider text-xl mb-2">{truncateText(event.title, 30)}</h3>
-                <p className="mb-2 font-light flex-grow">
-                  {truncateText(event.description, 240)}
-                </p>
-                <div className="flex mb-2">
-                  <img alt="event location" className="w-6 h-6 mr-2" src="/assets/icon_marker.svg" />
-                  <a href={`https://maps.google.com/?q=${event.location}`} rel="noopener" target="_blank">
-                    {truncateText(event.location, 30)}
-                  </a>
-                </div>
-                <time dateTime={event.startTimeISO} className="flex flex-col md:flex-row md:space-x-6">
-                  <div className="flex mb-2 md:mb-0">
-                    <img alt="event date" className="w-6 h-6 mr-2" src="/assets/icon_calendar.svg" />
-                    {event.date}
-                  </div>
-                  <div className="flex">
-                    <img alt="event time" className="w-6 h-6 mr-2" src="/assets/icon_clock.svg" />
-                    {event.startTime} - {event.endTime}
-                  </div>
-                </time>
-              </article>
+              <EventCard key={event.id} event={event} />
             );
           })}
         </div>
