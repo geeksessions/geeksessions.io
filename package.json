@@ -24,7 +24,7 @@
     "dependencies": {
         "@hapi/wreck": "^16.0.1",
         "isomorphic-unfetch": "^3.0.0",
-        "luxon": "^1.21.3",
+        "luxon": "^2.5.2",
         "next": "^10.2.3",
         "react": "^16.14.0",
         "react-dom": "^16.14.0"
